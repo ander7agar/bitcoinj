@@ -274,7 +274,7 @@ public class WalletProtobufSerializer {
             if (input.hasSequence())
                 inputBuilder.setSequence((int) input.getSequenceNumber());
             if (input.getValue() != null)
-                inputBuilder.setValue(input.getValue().value);
+                inputBuilder.setValue(input.getValue().getValue());
             txBuilder.addTransactionInput(inputBuilder);
         }
 
@@ -282,7 +282,7 @@ public class WalletProtobufSerializer {
         for (TransactionOutput output : tx.getOutputs()) {
             Protos.TransactionOutput.Builder outputBuilder = Protos.TransactionOutput.newBuilder()
                 .setScriptBytes(ByteString.copyFrom(output.getScriptBytes()))
-                .setValue(output.getValue().value);
+                .setValue(output.getValue().getValue());
             final TransactionInput spentBy = output.getSpentBy();
             if (spentBy != null) {
                 Sha256Hash spendingHash = spentBy.getParentTransaction().getHash();
@@ -325,8 +325,8 @@ public class WalletProtobufSerializer {
         ExchangeRate exchangeRate = tx.getExchangeRate();
         if (exchangeRate != null) {
             Protos.ExchangeRate.Builder exchangeRateBuilder = Protos.ExchangeRate.newBuilder()
-                    .setCoinValue(exchangeRate.coin.value).setFiatValue(exchangeRate.fiat.value)
-                    .setFiatCurrencyCode(exchangeRate.fiat.currencyCode);
+                    .setCoinValue(exchangeRate.coin.getValue()).setFiatValue(exchangeRate.fiat.getValue())
+                    .setFiatCurrencyCode(exchangeRate.fiat.getCurrencyCode());
             txBuilder.setExchangeRate(exchangeRateBuilder);
         }
 
