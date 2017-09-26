@@ -1,5 +1,4 @@
-
-
+[![](https://jitpack.io/v/ander7agar/bitcoinj.svg)](https://jitpack.io/#ander7agar/bitcoinj)
 
 [![Visit our IRC channel](https://kiwiirc.com/buttons/irc.freenode.net/bitcoinj.png)](https://kiwiirc.com/client/irc.freenode.net/bitcoinj)
 
