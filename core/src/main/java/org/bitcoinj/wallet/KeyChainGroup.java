@@ -234,7 +234,9 @@ public class KeyChainGroup implements KeyBag {
             currentAddresses.put(purpose, freshAddress);
             return freshAddress;
         } else {
-            return freshKey(purpose).toAddress(params);
+            DeterministicKey key = freshKey(purpose);
+            currentKeys.put(purpose, key);
+            return key.toAddress(params);
         }
     }
 
